@@ -5,22 +5,43 @@ const projects = [
     title: "RAVEN-JARVIS",
     category: "AI Assistant",
     description:
-      "Voice-controlled modular AI assistant with cybersecurity integrations.",
-    tech: ["Python", "AI", "Automation"],
+      "Voice-controlled modular AI assistant designed for cybersecurity, automation and future AI integrations.",
+    tech: [
+      "Python",
+      "Speech Recognition",
+      "AI",
+      "Automation",
+      "Cybersecurity",
+    ],
+    status: "In Development",
   },
+
   {
     title: "ByteFuture",
-    category: "Platform",
+    category: "Technology Platform",
     description:
-      "Technology platform for cybersecurity, development and content creation.",
-    tech: ["Next.js", "TypeScript", "Tailwind"],
+      "Modern platform for cybersecurity, AI, development and educational content powered by Next.js and Vercel.",
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind",
+      "Vercel",
+    ],
+    status: "Live",
   },
+
   {
-    title: "Future Labs",
-    category: "Research",
+    title: "Cybersecurity Learning Hub",
+    category: "Education",
     description:
-      "Experimental projects focused on future technologies and innovation.",
-    tech: ["Research", "AI", "Development"],
+      "A growing collection of cybersecurity resources, tutorials, roadmaps and learning guides.",
+    tech: [
+      "Security",
+      "Linux",
+      "Networking",
+      "Ethical Hacking",
+    ],
+    status: "Active",
   },
 ];
 
@@ -78,7 +99,7 @@ export default function ProjectsPage() {
                   className="
                   h-48
 
-                  bg-linear-to-br
+                  bg-gradient-to-br
                   from-pink-500/30
                   via-zinc-900
                   to-black
@@ -88,29 +109,50 @@ export default function ProjectsPage() {
                   justify-center
                   "
                 >
-                  <h2 className="text-3xl font-bold">
-                    {project.title}
-                  </h2>
+                  <div className="text-center">
+
+                    <h2 className="text-3xl font-bold">
+                      {project.title}
+                    </h2>
+
+                  </div>
                 </div>
 
                 <div className="p-8">
 
-                  <span
-                    className="
-                    inline-block
+                  <div className="flex gap-3 flex-wrap">
 
-                    px-3
-                    py-1
+                    <span
+                      className="
+                      px-3
+                      py-1
 
-                    rounded-full
+                      rounded-full
 
-                    bg-pink-500/10
-                    text-pink-400
-                    text-sm
-                    "
-                  >
-                    {project.category}
-                  </span>
+                      bg-pink-500/10
+                      text-pink-400
+                      text-sm
+                      "
+                    >
+                      {project.category}
+                    </span>
+
+                    <span
+                      className="
+                      px-3
+                      py-1
+
+                      rounded-full
+
+                      bg-green-500/10
+                      text-green-400
+                      text-sm
+                      "
+                    >
+                      {project.status}
+                    </span>
+
+                  </div>
 
                   <p className="text-zinc-400 mt-6">
                     {project.description}
@@ -148,6 +190,21 @@ export default function ProjectsPage() {
                     "
                   >
                     View Details →
+                  </button>
+
+                  <button
+                    className="
+                    block
+                    mt-4
+
+                    text-zinc-400
+
+                    hover:text-pink-500
+
+                    transition
+                    "
+                  >
+                    GitHub →
                   </button>
 
                 </div>
