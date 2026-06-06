@@ -99,7 +99,7 @@ export default function ProjectsPage() {
                   className="
                   h-48
 
-                  bg-gradient-to-br
+                  bbg-linear-to-br
                   from-pink-500/30
                   via-zinc-900
                   to-black

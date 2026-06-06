@@ -3,19 +3,36 @@ import FeaturedDomains from "@/components/home/FeaturedDomains";
 import ProjectPreview from "@/components/home/ProjectPreview";
 import Stats from "@/components/home/Stats";
 import CTA from "@/components/home/CTA";
+import SocialLinks from "@/components/home/SocialLinks";
 
 export default function Home() {
   return (
-    <main className="max-w-7xl mx-auto px-6">
-      <Hero />
+    <main className="relative">
 
-      <FeaturedDomains />
+      <section id="hero">
+        <Hero />
+      </section>
 
-      <ProjectPreview />
+      <section id="domains">
+        <FeaturedDomains />
+      </section>
 
-      <Stats />
+      <section id="projects">
+        <ProjectPreview />
+      </section>
 
-      <CTA />
+      <section id="stats">
+        <Stats />
+      </section>
+
+      <section id="social">
+        <SocialLinks />
+      </section>
+
+      <section id="contact">
+        <CTA />
+      </section>
+
     </main>
   );
 }
