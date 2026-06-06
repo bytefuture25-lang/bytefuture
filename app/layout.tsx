@@ -16,7 +16,10 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "ByteFuture | Cybersecurity • AI • Development",
+  title: {
+    default: "ByteFuture",
+    template: "%s | ByteFuture",
+  },
 
   description:
     "ByteFuture is a technology platform focused on cybersecurity, artificial intelligence, development and digital creativity.",
@@ -38,34 +41,36 @@ export const metadata: Metadata = {
     },
   ],
 
+  creator: "Future Byte",
+
+  metadataBase: new URL("https://bytefuture.vercel.app"),
+
   openGraph: {
     title: "ByteFuture",
     description:
       "Cybersecurity • AI • Development • Content Creation",
-
-    type: "website",
-
+    url: "https://bytefuture.vercel.app",
     siteName: "ByteFuture",
+    type: "website",
+  },
 
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "ByteFuture",
-      },
-    ],
+  twitter: {
+    card: "summary_large_image",
+    title: "ByteFuture",
+    description:
+      "Cybersecurity • AI • Development • Content Creation",
   },
 };
+
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
     <html lang="en">
       <body
-        className={`${orbitron.variable} ${poppins.variable}`}
+        className={`${orbitron.variable} ${poppins.variable} bg-black text-white`}
       >
         <Navbar />
 
@@ -76,4 +81,3 @@ export default function RootLayout({
     </html>
   );
 }
-

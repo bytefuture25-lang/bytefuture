@@ -13,10 +13,8 @@ export default function Navbar() {
       sticky
       top-0
       z-50
-
       border-b
       border-zinc-800
-
       bg-black/60
       backdrop-blur-md
       "
@@ -26,11 +24,9 @@ export default function Navbar() {
         <div className="flex items-center justify-between">
 
           {/* Logo */}
-
           <Logo />
 
-          {/* Mobile Button */}
-
+          {/* Mobile Menu Button */}
           <button
             onClick={() => setOpen(!open)}
             className="md:hidden text-2xl"
@@ -39,78 +35,69 @@ export default function Navbar() {
           </button>
 
           {/* Desktop Menu */}
-
           <div className="hidden md:flex items-center gap-8">
 
-            <Link
-              href="/"
-              className="hover:text-pink-500 transition"
-            >
+            <Link href="/" className="hover:text-pink-500 transition">
               Home
             </Link>
 
-            <Link
-              href="/about"
-              className="hover:text-pink-500 transition"
-            >
+            <Link href="/about" className="hover:text-pink-500 transition">
               About
             </Link>
 
-            <Link
-              href="/projects"
-              className="hover:text-pink-500 transition"
-            >
+            <Link href="/projects" className="hover:text-pink-500 transition">
               Projects
             </Link>
 
-            <Link
-              href="/youtube"
-              className="hover:text-pink-500 transition"
-            >
+            <Link href="/youtube" className="hover:text-pink-500 transition">
               Videos
             </Link>
 
-            <Link
-              href="/resources"
-              className="hover:text-pink-500 transition"
-            >
+            <Link href="/resources" className="hover:text-pink-500 transition">
               Resources
             </Link>
 
-            <Link
-              href="/blog"
-              className="hover:text-pink-500 transition"
-            >
+            <Link href="/blog" className="hover:text-pink-500 transition">
               Blog
             </Link>
 
-            <Link
-              href="/contact"
-              className="hover:text-pink-500 transition"
-            >
+            <Link href="/contact" className="hover:text-pink-500 transition">
               Contact
             </Link>
 
-          </div>
+            <Link href="/login" className="hover:text-pink-500 transition">
+              Login
+            </Link>
 
+            <Link
+              href="/signup"
+              className="
+              px-4
+              py-2
+              rounded-lg
+              bg-pink-500
+              hover:bg-pink-600
+              transition
+              "
+            >
+              Signup
+            </Link>
+
+          </div>
         </div>
 
         {/* Mobile Menu */}
-
         {open && (
           <div
             className="
             md:hidden
-
             flex
             flex-col
-
             gap-4
             mt-6
             pb-4
             "
           >
-
             <Link href="/">Home</Link>
 
             <Link href="/about">About</Link>
@@ -125,6 +112,9 @@ export default function Navbar() {
 
             <Link href="/contact">Contact</Link>
 
+            <Link href="/login">Login</Link>
+
+            <Link href="/signup">Signup</Link>
           </div>
         )}
 

@@ -131,7 +131,7 @@ export default function Hero() {
           className="hidden lg:flex justify-center"
         >
 
-          <div className="relative w-[450px] h-[450px]">
+          <div className="relative w-112.5 h-112.5">
 
             <div className="absolute inset-0 rounded-full bg-pink-500/20 blur-3xl" />
 
