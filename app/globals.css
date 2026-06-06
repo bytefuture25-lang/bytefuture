@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0D0D0D;
+  --card: #161616;
+  --pink: #FF4FA3;
+  --red: #FF2E2E;
+  --white: #FFFFFF;
+  --gray: #B0B0B0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--white);
+  font-family: var(--font-poppins);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-orbitron);
+}
+
+::selection {
+  background: var(--pink);
+  color: white;
+}
