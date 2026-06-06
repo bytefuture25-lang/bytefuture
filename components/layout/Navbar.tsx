@@ -2,9 +2,24 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  const navLink = (href: string, label: string) => (
+    <Link
+      href={href}
+      className={
+        pathname === href
+          ? "text-pink-500 font-medium"
+          : "hover:text-pink-500 transition"
+      }
+    >
+      {label}
+    </Link>
+  );
 
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md border-b border-zinc-800">
@@ -18,6 +33,7 @@ export default function Navbar() {
           >
             ByteFuture
           </Link>
+
           <button
             className="md:hidden"
             onClick={() => setOpen(!open)}
@@ -26,35 +42,13 @@ export default function Navbar() {
           </button>
 
           <div className="hidden md:flex gap-8">
-
-            <Link href="/" className="hover:text-pink-500 transition">
-              Home
-            </Link>
-
-            <Link href="/about" className="hover:text-pink-500 transition">
-              About
-            </Link>
-
-            <Link href="/projects" className="hover:text-pink-500 transition">
-              Projects
-            </Link>
-
-            <Link href="/youtube" className="hover:text-pink-500 transition">
-              Videos
-            </Link>
-
-            <Link href="/resources" className="hover:text-pink-500 transition">
-              Resources
-            </Link>
-
-            <Link href="/blog" className="hover:text-pink-500 transition">
-              Blog
-            </Link>
-
-            <Link href="/contact" className="hover:text-pink-500 transition">
-              Contact
-            </Link>
-
+            {navLink("/", "Home")}
+            {navLink("/about", "About")}
+            {navLink("/projects", "Projects")}
+            {navLink("/youtube", "Videos")}
+            {navLink("/resources", "Resources")}
+            {navLink("/blog", "Blog")}
+            {navLink("/contact", "Contact")}
           </div>
 
         </div>
@@ -62,19 +56,13 @@ export default function Navbar() {
         {open && (
           <div className="md:hidden flex flex-col gap-4 mt-4">
 
-            <Link href="/">Home</Link>
-
-            <Link href="/about">About</Link>
-
-            <Link href="/projects">Projects</Link>
-
-            <Link href="/youtube">Videos</Link>
-
-            <Link href="/resources">Resources</Link>
-
-            <Link href="/blog">Blog</Link>
-
-            <Link href="/contact">Contact</Link>
+            {navLink("/", "Home")}
+            {navLink("/about", "About")}
+            {navLink("/projects", "Projects")}
+            {navLink("/youtube", "Videos")}
+            {navLink("/resources", "Resources")}
+            {navLink("/blog", "Blog")}
+            {navLink("/contact", "Contact")}
 
           </div>
         )}
