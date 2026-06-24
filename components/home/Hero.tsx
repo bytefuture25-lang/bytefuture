@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import ParallaxSection from "@/components/animations/ParallaxSection";
 
 export default function Hero() {
   return (
@@ -11,31 +12,39 @@ export default function Hero() {
 
       <div className="absolute inset-0 -z-10 overflow-hidden">
 
-        <div
-          className="
-          absolute
-          top-20
-          left-20
-          w-72
-          h-72
-          rounded-full
-          bg-pink-500/20
-          blur-3xl
-          "
-        />
+        {/* Left Glow */}
 
-        <div
-          className="
-          absolute
-          bottom-10
-          right-10
-          w-96
-          h-96
-          rounded-full
-          bg-pink-500/10
-          blur-3xl
-          "
-        />
+        <ParallaxSection>
+          <div
+            className="
+            absolute
+            top-20
+            left-20
+            w-72
+            h-72
+            rounded-full
+            bg-pink-500/20
+            blur-3xl
+            "
+          />
+        </ParallaxSection>
+
+        {/* Right Glow */}
+
+        <ParallaxSection>
+          <div
+            className="
+            absolute
+            bottom-10
+            right-10
+            w-96
+            h-96
+            rounded-full
+            bg-pink-500/10
+            blur-3xl
+            "
+          />
+        </ParallaxSection>
 
       </div>
 
@@ -49,28 +58,68 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
         >
 
-          <p className="text-pink-500 uppercase tracking-[0.35em] mb-5">
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.1 }}
+            className="text-pink-500 uppercase tracking-[0.35em] mb-5"
+          >
             Future Byte • Elowen Studio
-          </p>
+          </motion.p>
 
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+          <motion.h1
+            initial={{
+              opacity: 0,
+              y: 80,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              duration: 1.2,
+              ease: "easeOut",
+            }}
+            className="
+            text-5xl
+            md:text-6xl
+            lg:text-7xl
+            font-bold
+            leading-tight
+            "
+          >
             Building The Future
             <br />
             Through Technology
-          </h1>
+          </motion.h1>
 
-          <h2 className="text-xl md:text-2xl mt-6 text-zinc-400">
+          <motion.h2
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+            className="text-xl md:text-2xl mt-6 text-zinc-400"
+          >
             Cybersecurity • Artificial Intelligence • Development
-          </h2>
+          </motion.h2>
 
-          <p className="max-w-xl mt-8 text-zinc-500 text-lg">
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8, duration: 0.8 }}
+            className="max-w-xl mt-8 text-zinc-500 text-lg"
+          >
             ByteFuture is a modern technology platform focused on
             cybersecurity, artificial intelligence, software
             development and digital creativity. Learn, build and
             explore the future of technology.
-          </p>
+          </motion.p>
 
-          <div className="flex flex-wrap gap-4 mt-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1, duration: 0.7 }}
+            className="flex flex-wrap gap-4 mt-10"
+          >
 
             <Link
               href="/projects"
@@ -80,7 +129,9 @@ export default function Hero() {
               rounded-xl
               bg-pink-500
               hover:scale-105
-              transition
+              hover:shadow-[0_0_25px_rgba(236,72,153,0.45)]
+              transition-all
+              duration-300
               font-medium
               "
             >
@@ -96,7 +147,10 @@ export default function Hero() {
               border
               border-pink-500
               hover:bg-pink-500/10
-              transition
+              hover:border-pink-400
+              hover:shadow-[0_0_20px_rgba(236,72,153,0.25)]
+              transition-all
+              duration-300
               "
             >
               Watch Videos
@@ -112,104 +166,113 @@ export default function Hero() {
               border
               border-zinc-700
               hover:border-pink-500
-              transition
+              hover:shadow-[0_0_20px_rgba(236,72,153,0.25)]
+              transition-all
+              duration-300
               "
             >
               GitHub
             </Link>
 
-          </div>
+          </motion.div>
 
         </motion.div>
 
-        {/* RIGHT */}
+        {/* RIGHT SIDE PARALLAX */}
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1 }}
-          className="hidden lg:flex justify-center"
-        >
+        <ParallaxSection>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1 }}
+            className="hidden lg:flex justify-center"
+          >
 
-          <div className="relative w-112.5 h-112.5">
+            <div className="relative w-[450px] h-[450px]">
 
-            <div className="absolute inset-0 rounded-full bg-pink-500/20 blur-3xl" />
+              <div className="absolute inset-0 rounded-full bg-pink-500/20 blur-3xl" />
 
-            <motion.div
-              animate={{ y: [0, -12, 0] }}
-              transition={{ repeat: Infinity, duration: 4 }}
-              className="
-              absolute
-              top-8
-              left-8
-              bg-zinc-900
-              border
-              border-zinc-800
-              rounded-2xl
-              px-8
-              py-5
-              "
-            >
-              🛡 Cybersecurity
-            </motion.div>
+              <motion.div
+                animate={{ y: [0, -12, 0] }}
+                transition={{ repeat: Infinity, duration: 4 }}
+                className="
+                absolute
+                top-8
+                left-8
+                backdrop-blur-md
+                bg-white/5
+                border
+                border-white/10
+                rounded-2xl
+                px-8
+                py-5
+                "
+              >
+                🛡 Cybersecurity
+              </motion.div>
 
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ repeat: Infinity, duration: 5 }}
-              className="
-              absolute
-              top-40
-              right-0
-              bg-zinc-900
-              border
-              border-zinc-800
-              rounded-2xl
-              px-8
-              py-5
-              "
-            >
-              🤖 Artificial Intelligence
-            </motion.div>
+              <motion.div
+                animate={{ y: [0, 10, 0] }}
+                transition={{ repeat: Infinity, duration: 5 }}
+                className="
+                absolute
+                top-8
+                right-0
+                backdrop-blur-md
+                bg-white/5
+                border
+                border-white/10
+                rounded-2xl
+                hover:scale-105
+                px-8
+                py-5
+                "
+              >
+                🤖 Artificial Intelligence
+              </motion.div>
 
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ repeat: Infinity, duration: 6 }}
-              className="
-              absolute
-              bottom-24
-              left-0
-              bg-zinc-900
-              border
-              border-zinc-800
-              rounded-2xl
-              px-8
-              py-5
-              "
-            >
-              💻 Development
-            </motion.div>
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ repeat: Infinity, duration: 6 }}
+                className="
+                absolute
+                bottom-24
+                left-0
+                backdrop-blur-md
+                bg-white/5
+                border
+                border-white/10
+                rounded-2xl
+                px-8
+                py-5
+                "
+              >
+                💻 Development
+              </motion.div>
 
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ repeat: Infinity, duration: 5 }}
-              className="
-              absolute
-              bottom-0
-              right-10
-              bg-zinc-900
-              border
-              border-zinc-800
-              rounded-2xl
-              px-8
-              py-5
-              "
-            >
-              🎥 Content Creation
-            </motion.div>
+              <motion.div
+                animate={{ y: [0, 8, 0] }}
+                transition={{ repeat: Infinity, duration: 5 }}
+                className="
+                absolute
+                bottom-0
+                right-10
+                backdrop-blur-md
+                bg-white/5
+                border
+                border-white/10
+                rounded-2xl
+                px-8
+                py-5
+                "
+              >
+                🎥 Content Creation
+              </motion.div>
 
-          </div>
+            </div>
 
-        </motion.div>
+          </motion.div>
+        </ParallaxSection>
 
       </div>
 
