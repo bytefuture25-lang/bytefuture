@@ -1,8 +1,15 @@
+// @ts-ignore: global CSS import has no type declarations
 import "./globals.css";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
+
 import type { Metadata } from "next";
 import { Orbitron, Poppins } from "next/font/google";
+
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import AuroraBackground from "@/components/background/AuroraBackground";
+
+import PremiumCursor from "@/components/cursor/PremiumCursor";
+import InteractionProvider from "@/components/interaction/InteractionProvider";
 
 const orbitron = Orbitron({
   subsets: ["latin"],
@@ -72,11 +79,17 @@ export default function RootLayout({
       <body
         className={`${orbitron.variable} ${poppins.variable} bg-black text-white`}
       >
-        <Navbar />
+        <InteractionProvider>
+          <AuroraBackground />
 
-        {children}
+          <PremiumCursor />
 
-        <Footer />
+          <Navbar />
+
+          <main>{children}</main>
+
+          <Footer />
+        </InteractionProvider>
       </body>
     </html>
   );

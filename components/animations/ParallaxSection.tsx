@@ -1,31 +1,25 @@
 "use client";
 
-import { useRef, useEffect } from "react";
-import gsap from "gsap";
+import { motion } from "framer-motion";
+import { animationPresets } from "./Presets";
+
+interface ParallaxSectionProps {
+  children: React.ReactNode;
+  className?: string;
+}
 
 export default function ParallaxSection({
   children,
-}: {
-  children: React.ReactNode;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = ref.current;
-
-    if (!el) return;
-
-    gsap.to(el, {
-      yPercent: -10,
-      ease: "none",
-      scrollTrigger: {
-        trigger: el,
-        start: "top bottom",
-        end: "bottom top",
-        scrub: true,
-      },
-    });
-  }, []);
-
-  return <div ref={ref}>{children}</div>;
+  className = "",
+}: ParallaxSectionProps) {
+  return (
+    <motion.div
+      variants={animationPresets.fadeUp}
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
 }

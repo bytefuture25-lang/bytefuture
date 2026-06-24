@@ -1,48 +1,62 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { ReactNode, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 interface ScrollRevealProps {
-  children: React.ReactNode;
+  children: ReactNode;
+  className?: string;
+  delay?: number;
+  duration?: number;
+  distance?: number;
 }
 
 export default function ScrollReveal({
   children,
+  className = "",
+  delay = 0,
+  duration = 1,
+  distance = 50,
 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const el = ref.current;
+    if (!ref.current) return;
 
-    if (!el) return;
+    const element = ref.current;
 
-    gsap.fromTo(
-      el,
-      {
-        opacity: 0,
-        y: 80,
+    gsap.set(element, {
+      opacity: 0,
+      y: distance,
+    });
+
+    const tween = gsap.to(element, {
+      opacity: 1,
+      y: 0,
+      duration,
+      delay,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: element,
+        start: "top 80%",
+        toggleActions: "play none none none",
+        once: true,
       },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1.2,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: el,
-          start: "top 85%",
-          once: true,
-        },
-      }
-    );
+    });
 
     return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
+      tween.kill();
     };
-  }, []);
+  }, [delay, duration, distance]);
 
-  return <div ref={ref}>{children}</div>;
+  return (
+    <div ref={ref} className={className}>
+      {children}
+    </div>
+  );
 }

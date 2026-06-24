@@ -3,6 +3,9 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import ParallaxSection from "@/components/animations/ParallaxSection";
+import gsap from "gsap";
+import { useEffect, useRef } from "react";
+import Magnetic from "@/components/cursor/Magnetic";
 
 export default function Hero() {
   return (
@@ -114,69 +117,81 @@ export default function Hero() {
             explore the future of technology.
           </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 0.7 }}
-            className="flex flex-wrap gap-4 mt-10"
-          >
+         <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 1, duration: 0.7 }}
+      className="flex flex-wrap gap-4 mt-10"
+    >
+      <Magnetic strength={28}>
+        <Link
+          href="/projects"
+          className="
+          inline-flex
+          items-center
+          justify-center
+          px-7
+          py-3.5
+          rounded-xl
+          bg-pink-500
+          hover:scale-105
+          hover:shadow-[0_0_25px_rgba(236,72,153,0.45)]
+          transition-all
+          duration-300
+          font-medium
+          "
+        >
+          Explore Projects
+        </Link>
+      </Magnetic>
 
-            <Link
-              href="/projects"
-              className="
-              px-7
-              py-3.5
-              rounded-xl
-              bg-pink-500
-              hover:scale-105
-              hover:shadow-[0_0_25px_rgba(236,72,153,0.45)]
-              transition-all
-              duration-300
-              font-medium
-              "
-            >
-              Explore Projects
-            </Link>
+      <Magnetic strength={24}>
+        <Link
+          href="/youtube"
+          className="
+          inline-flex
+          items-center
+          justify-center
+          px-7
+          py-3.5
+          rounded-xl
+          border
+          border-pink-500
+          hover:bg-pink-500/10
+          hover:border-pink-400
+          hover:shadow-[0_0_20px_rgba(236,72,153,0.25)]
+          transition-all
+          duration-300
+          "
+        >
+          Watch Videos
+        </Link>
+      </Magnetic>
 
-            <Link
-              href="/youtube"
-              className="
-              px-7
-              py-3.5
-              rounded-xl
-              border
-              border-pink-500
-              hover:bg-pink-500/10
-              hover:border-pink-400
-              hover:shadow-[0_0_20px_rgba(236,72,153,0.25)]
-              transition-all
-              duration-300
-              "
-            >
-              Watch Videos
-            </Link>
-
-            <Link
-              href="https://github.com/bytefuture25-lang"
-              target="_blank"
-              className="
-              px-7
-              py-3.5
-              rounded-xl
-              border
-              border-zinc-700
-              hover:border-pink-500
-              hover:shadow-[0_0_20px_rgba(236,72,153,0.25)]
-              transition-all
-              duration-300
-              "
-            >
-              GitHub
-            </Link>
-
-          </motion.div>
-
-        </motion.div>
+      <Magnetic strength={20}>
+        <Link
+          href="https://github.com/bytefuture25-lang"
+          target="_blank"
+          className="
+          inline-flex
+          items-center
+          justify-center
+          px-7
+          py-3.5
+          rounded-xl
+          border
+          border-zinc-700
+          hover:border-pink-500
+          hover:shadow-[0_0_20px_rgba(236,72,153,0.25)]
+          transition-all
+          duration-300
+          "
+        >
+          GitHub
+        </Link>
+      </Magnetic>
+    </motion.div>
+  </motion.div>
 
         {/* RIGHT SIDE PARALLAX */}
 
